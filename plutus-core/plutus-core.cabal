@@ -40,6 +40,7 @@ common lang
     ImportQualifiedPost
     ScopedTypeVariables
     StandaloneDeriving
+    TypeOperators
 
   ghc-options:
     -Wall -Wnoncanonical-monad-instances -Wincomplete-uni-patterns
