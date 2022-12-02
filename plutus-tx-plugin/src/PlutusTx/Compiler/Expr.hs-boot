@@ -8,12 +8,12 @@ import           PlutusTx.PIRTypes
 
 import qualified GHC.Plugins as GHC
 
-compileDataConRef :: Compiling uni fun m => GHC.DataCon -> m (PIRTerm uni fun)
+compileDataConRef :: Compiling uni fun m ann => GHC.DataCon -> m (PIRTerm uni fun)
 
 compileExpr
-    :: CompilingDefault uni fun m
+    :: CompilingDefault uni fun m ann
     => GHC.CoreExpr -> m (PIRTerm uni fun)
 
 compileExprWithDefs
-    :: CompilingDefault uni fun m
+    :: CompilingDefault uni fun m ann
     => GHC.CoreExpr -> m (PIRTerm uni fun)
