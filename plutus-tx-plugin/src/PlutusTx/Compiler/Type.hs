@@ -28,6 +28,7 @@ import PlutusTx.PIRTypes
 import GHC.Builtin.Types.Prim qualified as GHC
 import GHC.Core.FamInstEnv qualified as GHC
 import GHC.Core.Multiplicity qualified as GHC
+import GHC.Core.Reduction qualified as GHC
 import GHC.Plugins qualified as GHC
 
 import PlutusIR qualified as PIR
@@ -71,7 +72,7 @@ compileTypeNorm :: CompilingDefault uni fun m ann => GHC.Type -> m (PIRType uni)
 compileTypeNorm ty = do
     CompileContext {ccFamInstEnvs=envs} <- ask
     -- See Note [Type families and normalizing types]
-    let (_, ty') = GHC.normaliseType envs GHC.Representational ty
+    let ty' = GHC.reductionReducedType $ GHC.normaliseType envs GHC.Representational ty
     compileType ty'
 
 -- | Compile a type.
