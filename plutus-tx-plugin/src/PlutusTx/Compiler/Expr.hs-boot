@@ -3,10 +3,10 @@
 
 module PlutusTx.Compiler.Expr (compileExpr, compileExprWithDefs, compileDataConRef) where
 
-import           PlutusTx.Compiler.Types
+import           PlutusTx.Compiler.Types 
 import           PlutusTx.PIRTypes
 
-import qualified GhcPlugins                               as GHC
+import qualified GHC.Plugins as GHC
 
 compileDataConRef :: Compiling uni fun m => GHC.DataCon -> m (PIRTerm uni fun)
 
